@@ -1,0 +1,387 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+main {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 34px 22px;
+}
+
+.profile-card {
+  width: min(100%, 560px);
+}
+
+.emily {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 500px);
+  height: auto;
+  margin: 0 auto -34px;
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.75));
+}
+
+.discord-profile {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  display: block;
+  min-height: 166px;
+  padding: 34px 40px;
+  background: rgba(5, 5, 6, 0.88);
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(5px);
+}
+
+.cobweb {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: -34px;
+  display: block;
+  width: 315px;
+  height: auto;
+  opacity: 0.17;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 86%, transparent 100%);
+  pointer-events: none;
+}
+
+.profile-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.avatar-wrap {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 92px;
+  width: 92px;
+  height: 92px;
+}
+
+.avatar {
+  display: block;
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #4a4c51;
+}
+
+.status {
+  position: absolute;
+  right: -1px;
+  bottom: 1px;
+  width: 24px;
+  height: 24px;
+  border: 5px solid #0c0d0f;
+  border-radius: 50%;
+}
+
+.user-details {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.user-details h1 {
+  margin: 0;
+  overflow: hidden;
+  font-size: 29px;
+  line-height: 1.1;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-details p {
+  margin: 7px 0 16px;
+  color: #b5bac1;
+  font-size: 15px;
+}
+
+.presence {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #b5bac1;
+  font-size: 13px;
+}
+
+.presence-dot {
+  display: block;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+}
+
+.spotify-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 25px;
+  padding-top: 20px;
+  color: #f5f5f5;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.spotify-art,
+.spotify-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.activity-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  color: #d5d7dc;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 17px;
+}
+
+.spotify-mark {
+  color: #1ed760;
+  font-size: 22px;
+}
+
+.spotify-copy {
+  min-width: 0;
+}
+
+.spotify-copy span {
+  display: block;
+  margin-bottom: 4px;
+  color: #1ed760;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.spotify-copy strong,
+.spotify-copy p {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-popout {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-left: auto;
+  flex: 0 0 34px;
+  color: #6f9a7c;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  text-decoration: none;
+  font-size: 22px;
+  transition: color 150ms ease, text-shadow 150ms ease;
+}
+
+.activity-popout:hover,
+.activity-popout:focus-visible {
+  color: #83ad8f;
+  background: transparent;
+  text-shadow: 0 0 10px rgba(111, 154, 124, 0.38);
+}
+
+.spotify-copy strong {
+  font-size: 14px;
+}
+
+.spotify-copy p {
+  margin-top: 3px;
+  color: #aeb1b7;
+  font-size: 12px;
+}
+
+.activity-row .spotify-copy span {
+  color: #aeb1b7;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 11px;
+}
+
+.social-links a {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.social-links a::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.13);
+  filter: blur(12px);
+  opacity: 0.55;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.social-links a::after {
+  content: attr(data-label);
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  padding: 8px 11px;
+  color: #e8e8e8;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px #000, 0 0 3px #000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  background: transparent;
+  transform: translateY(-2px);
+}
+
+.social-links a:hover::before,
+.social-links a:focus-visible::before {
+  opacity: 0.9;
+  transform: scale(1.12);
+}
+
+.social-links a:hover::after,
+.social-links a:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.social-links img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 29px;
+  height: 29px;
+  opacity: 0.9;
+}
+
+.status-online { background: #23a55a; }
+.status-idle { background: #f0b232; }
+.status-dnd { background: #f23f43; }
+.status-offline { background: #80848e; }
+
+.credit {
+  position: fixed;
+  left: 20px;
+  bottom: 17px;
+  z-index: 4;
+  color: #73757a;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  opacity: 0.58;
+  transition: color 150ms ease, opacity 150ms ease;
+}
+
+.credit:hover,
+.credit:focus-visible {
+  color: #a9abb0;
+  opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-inline: 16px;
+  }
+
+  .emily {
+    margin-bottom: -25px;
+  }
+
+  .discord-profile {
+    min-height: 132px;
+    padding: 25px 26px;
+  }
+
+  .profile-main {
+    gap: 18px;
+  }
+
+  .cobweb {
+    width: 250px;
+    opacity: 0.15;
+  }
+
+  .avatar-wrap,
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .avatar-wrap { flex-basis: 72px; }
+  .user-details h1 { font-size: 24px; }
+
+  .credit {
+    left: 14px;
+    bottom: 12px;
+  }
+}
