@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Trough";
+  src: url("/TROUG___.TTF") format("truetype");
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -32,7 +38,7 @@ main {
 }
 
 .profile-card {
-  width: min(100%, 560px);
+  width: min(100%, 640px);
 }
 
 .emily {
@@ -50,8 +56,8 @@ main {
   z-index: 0;
   overflow: hidden;
   display: block;
-  min-height: 166px;
-  padding: 34px 40px;
+  min-height: 190px;
+  padding: 42px 48px;
   background: rgba(5, 5, 6, 0.88);
   border: 0;
   border-radius: 0;
@@ -78,34 +84,24 @@ main {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 17px;
 }
 
 .avatar-wrap {
   position: relative;
   z-index: 1;
-  flex: 0 0 92px;
-  width: 92px;
-  height: 92px;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
 }
 
 .avatar {
   display: block;
-  width: 92px;
-  height: 92px;
+  width: 76px;
+  height: 76px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #4a4c51;
-}
-
-.status {
-  position: absolute;
-  right: -1px;
-  bottom: 1px;
-  width: 24px;
-  height: 24px;
-  border: 5px solid #0c0d0f;
-  border-radius: 50%;
 }
 
 .user-details {
@@ -134,7 +130,7 @@ main {
 .user-details h1 {
   margin: 0;
   overflow: hidden;
-  font-size: 29px;
+  font-size: 25px;
   line-height: 1.1;
   font-weight: 700;
   text-overflow: ellipsis;
@@ -142,17 +138,17 @@ main {
 }
 
 .user-details p {
-  margin: 7px 0 16px;
+  margin: 4px 0 9px;
   color: #b5bac1;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .presence {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   color: #b5bac1;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .presence-dot {
@@ -356,18 +352,22 @@ main {
   left: 20px;
   bottom: 17px;
   z-index: 4;
-  color: #73757a;
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  color: #ffffff;
+  font-family: "Trough", serif;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
   text-decoration: none;
-  opacity: 0.58;
-  transition: color 150ms ease, opacity 150ms ease;
+  opacity: 0.38;
+  text-shadow: 1px 1px 0 rgba(132, 0, 0, 0.45);
+  transition: opacity 150ms ease, text-shadow 150ms ease;
 }
 
 .credit:hover,
 .credit:focus-visible {
-  color: #a9abb0;
-  opacity: 0.9;
+  color: #ffffff;
+  opacity: 0.62;
+  text-shadow: 1px 1px 0 rgba(170, 0, 0, 0.65);
 }
 
 @media (max-width: 480px) {
@@ -385,7 +385,7 @@ main {
   }
 
   .profile-main {
-    gap: 18px;
+    gap: 14px;
   }
 
   .cobweb {
@@ -395,15 +395,16 @@ main {
 
   .avatar-wrap,
   .avatar {
-    width: 72px;
-    height: 72px;
+    width: 66px;
+    height: 66px;
   }
 
-  .avatar-wrap { flex-basis: 72px; }
-  .user-details h1 { font-size: 24px; }
+  .avatar-wrap { flex-basis: 66px; }
+  .user-details h1 { font-size: 22px; }
 
   .credit {
     left: 14px;
     bottom: 12px;
+    font-size: 19px;
   }
 }

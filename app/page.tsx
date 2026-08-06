@@ -167,7 +167,6 @@ export default function Home() {
           <div className="profile-main">
             <div className="avatar-wrap">
               <img className="avatar" src={avatar} alt={`${user.username}'s Discord avatar`} draggable={false} />
-              <span className={`status status-${profile.discord_status}`} aria-hidden="true" />
             </div>
 
             <div className="user-details">
@@ -252,7 +251,7 @@ export default function Home() {
       </section>
 
       <a className="credit" href="https://stacy.rest" target="_blank" rel="noreferrer">
-        made by stacy
+        stacy
       </a>
     </main>
   );

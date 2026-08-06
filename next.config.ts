@@ -4,6 +4,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
   output: "export",
+  productionBrowserSourceMaps: false,
   trailingSlash: true,
   basePath,
   assetPrefix: basePath,
