@@ -18,6 +18,12 @@ type LanyardData = {
   discord_status: "online" | "idle" | "dnd" | "offline";
   activities: Array<{
     application_id?: string;
+    assets?: {
+      large_image?: string;
+      large_text?: string;
+      small_image?: string;
+      small_text?: string;
+    };
     details?: string;
     name: string;
     state?: string;
@@ -61,6 +67,29 @@ const statusLabels: Record<LanyardData["discord_status"], string> = {
   dnd: "Do Not Disturb",
   offline: "Offline",
 };
+
+const applicationIcons: Record<string, string> = {
+  "363445589247131668":
+    "https://cdn.discordapp.com/app-icons/363445589247131668/f2b60e350a2097289b3b0b877495e55f.png?size=128",
+};
+
+function getActivityImage(activity: LanyardData["activities"][number]) {
+  const image = activity.assets?.large_image ?? activity.assets?.small_image;
+
+  if (image?.startsWith("mp:")) {
+    return `https://media.discordapp.net/${image.slice(3)}`;
+  }
+
+  if (image?.startsWith("http://") || image?.startsWith("https://")) {
+    return image;
+  }
+
+  if (image && activity.application_id) {
+    return `https://cdn.discordapp.com/app-assets/${activity.application_id}/${image}.png`;
+  }
+
+  return activity.application_id ? applicationIcons[activity.application_id] : undefined;
+}
 
 const socialLinks = [
   { name: "Discord", icon: "discord", href: "https://discordapp.com/users/945011184799719464" },
@@ -117,6 +146,7 @@ export default function Home() {
     ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`
     : "https://cdn.discordapp.com/embed/avatars/0.png";
   const activity = profile.activities.find((item) => item.type !== 4 && item.name !== "Spotify");
+  const activityImage = activity ? getActivityImage(activity) : undefined;
   const isPlayingGame = profile.activities.some(
     (item) => item.type === 0 && item.name !== "Spotify",
   );
@@ -171,7 +201,17 @@ export default function Home() {
             </div>
           ) : activity ? (
             <div className="spotify-row activity-row" aria-label={`${activityLabels[activity.type] ?? "using"} ${activity.name}`}>
-              <span className="activity-mark" aria-hidden="true">✦</span>
+              {activityImage ? (
+                <img
+                  className="spotify-art activity-art"
+                  src={activityImage}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
+                />
+              ) : (
+                <span className="activity-mark" aria-hidden="true">✦</span>
+              )}
               <div className="spotify-copy">
                 <span>{activityLabels[activity.type] ?? "active on discord"}</span>
                 <strong>{activity.name}</strong>
