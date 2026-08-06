@@ -270,6 +270,17 @@ main {
   transition: background 160ms ease, transform 160ms ease;
 }
 
+.social-divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 3px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.social-links .server-link::before {
+  background: rgba(114, 137, 218, 0.18);
+}
+
 .social-links a::before {
   content: "";
   position: absolute;
@@ -320,13 +331,21 @@ main {
   transform: translate(-50%, 0);
 }
 
-.social-links img {
+.social-links img,
+.social-links svg {
   position: relative;
   z-index: 1;
   display: block;
   width: 29px;
   height: 29px;
   opacity: 0.9;
+}
+
+.social-links svg {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .status-online { background: #23a55a; }
