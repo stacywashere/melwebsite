@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const USER_ID = "945011184799719464";
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const DISCORD_PROFILE_URL = `https://discordapp.com/users/${USER_ID}`;
 
 type DiscordUser = {
   id: string;
@@ -92,7 +93,7 @@ function getActivityImage(activity: LanyardData["activities"][number]) {
 }
 
 const socialLinks = [
-  { name: "Discord", icon: "discord", href: "https://discordapp.com/users/945011184799719464" },
+  { name: "Discord Server", icon: "discord", href: "https://discord.gg/KHMQDZPn3y" },
   { name: "Spotify", icon: "spotify", href: "https://open.spotify.com/user/gfhmi7rc2rr0s3fzuyt80g798?si=3fb674039463484b" },
   { name: "Steam", icon: "steam", href: "https://steamcommunity.com/id/ukzyo/" },
   { name: "Roblox", icon: "roblox", href: "https://www.roblox.com/users/1113106419/profile" },
@@ -170,8 +171,16 @@ export default function Home() {
             </div>
 
             <div className="user-details">
-              <h1>{user.display_name ?? user.global_name ?? user.username}</h1>
-              <p>@{user.username}</p>
+              <a
+                className="discord-profile-link"
+                href={DISCORD_PROFILE_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${user.username}'s Discord profile`}
+              >
+                <h1>{user.display_name ?? user.global_name ?? user.username}</h1>
+                <p>@{user.username}</p>
+              </a>
               <div className="presence">
                 <span className={`presence-dot status-${profile.discord_status}`} aria-hidden="true" />
                 {presenceLabel}
@@ -239,21 +248,6 @@ export default function Home() {
               />
             </a>
           ))}
-          <span className="social-divider" aria-hidden="true" />
-          <a
-            className="server-link"
-            href="https://discord.gg/KHMQDZPn3y"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Discord Server"
-            data-label="Discord Server"
-          >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </a>
         </nav>
       </section>
 
