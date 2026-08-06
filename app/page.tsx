@@ -55,6 +55,13 @@ const activityLabels: Record<number, string> = {
   5: "competing in",
 };
 
+const statusLabels: Record<LanyardData["discord_status"], string> = {
+  online: "Online",
+  idle: "Idle",
+  dnd: "Do Not Disturb",
+  offline: "Offline",
+};
+
 const socialLinks = [
   { name: "Discord", icon: "discord", href: "https://discordapp.com/users/945011184799719464" },
   { name: "Spotify", icon: "spotify", href: "https://open.spotify.com/user/gfhmi7rc2rr0s3fzuyt80g798?si=3fb674039463484b" },
@@ -110,6 +117,14 @@ export default function Home() {
     ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256`
     : "https://cdn.discordapp.com/embed/avatars/0.png";
   const activity = profile.activities.find((item) => item.type !== 4 && item.name !== "Spotify");
+  const isPlayingGame = profile.activities.some(
+    (item) => item.type === 0 && item.name !== "Spotify",
+  );
+  const presenceLabel = profile.listening_to_spotify
+    ? "Listening to Music"
+    : isPlayingGame
+      ? "Playing a Game"
+      : statusLabels[profile.discord_status];
 
   return (
     <main>
@@ -129,7 +144,7 @@ export default function Home() {
               <p>@{user.username}</p>
               <div className="presence">
                 <span className={`presence-dot status-${profile.discord_status}`} aria-hidden="true" />
-                Listening to Music
+                {presenceLabel}
               </div>
             </div>
           </div>
